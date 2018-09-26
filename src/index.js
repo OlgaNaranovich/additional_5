@@ -1,6 +1,8 @@
 module.exports = function check(str, bracketsConfig) {
   const arr = str.split('');
-	while (arr.length > 0) {
+  let stop = arr.length;
+	
+	while (stop) {
 		for (let i = 0, len = arr.length; i < len; i++) {
 			for (let j = 0, len = bracketsConfig.length; j < len; j++) {
 			
@@ -10,10 +12,10 @@ module.exports = function check(str, bracketsConfig) {
 						return true;
 					}
 				}	
-			} continue;
-		}
-		if (arr.length > 0) { 
-			break;
+			} 
 		} 
-	} return false;
+		stop--;
+		if (stop === 0) break;
+	} 
+	if (arr.length > 0) {return false;}
 }
